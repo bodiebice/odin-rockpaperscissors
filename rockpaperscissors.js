@@ -20,44 +20,44 @@ function rpsGame(playerSelection) {
     if (compChoice == "rock") {
       if (playerSelection=="rock") {
         console.log("You tied with the computer! Try Again!")
-        return;
+        return 0;
       }
       if (playerSelection == "paper"){
         console.log("You Win! paper beats rock")
-        return;
+        return 1;
       }
       if (playerSelection == "scissors"){
         console.log("You lose! Rock beats Scissors")
-        return;
+        return -1;
       }
     }
     if (compChoice == "paper"){
       if (playerSelection=="paper"){
         console.log("You tied with the computer! Try Again!")
-        return;
+        return 0;
       }
       if (playerSelection == "rock"){
         console.log("You lose! paper beats rock")
-        return;
+        return -1;
       }
       if (playerSelection == "scissors"){
         console.log("You win! Scissors beats paper")
-        return;
+        return 1;
       }
     }
 
     if (compChoice == "scissors"){
       if (playerSelection=="scissors"){
         console.log("You tied with the computer! Try Again!")
-        return;
+        return 0;
       }
       if (playerSelection == "paper"){
         console.log("You lose! Scissors beats paper")
-        return;
+        return -1;
       }
       if (playerSelection == "rock"){
         console.log("You win! Rock beats Scissors")
-        return;
+        return 1;
       }
     }
   }
@@ -65,5 +65,19 @@ function rpsGame(playerSelection) {
     
 }
 
-
-console.log(rpsGame(playerSelection))
+function game(){
+  let score = 0
+  for (let i = 0; i<5; i++){
+    let playerSelection = prompt()
+    playerSelection = playerSelection.toLowerCase()
+    if (playerSelection == "rock" || playerSelection == "scissors" || playerSelection == "paper"){
+      score += rpsGame(playerSelection)
+      console.log("Your current score is", score)
+    }
+    else{
+      console.log("Invalid input, aborting game")
+    }
+  }
+}
+  
+console.log(game())
